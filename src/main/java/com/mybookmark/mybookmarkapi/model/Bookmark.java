@@ -3,11 +3,14 @@ package com.mybookmark.mybookmarkapi.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Columns;
 
 @Entity
 public class Bookmark {
@@ -16,28 +19,30 @@ public class Bookmark {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long bookmarkId;
 	
+	@Column(length = 100)
 	private String title;
 
 	private String url;
 	
+	@Column(length = 300)
 	private String overview;
 	
 	@OneToMany
 	private Set<Tag> tags = new HashSet<>();
 	
-	private int referedCount;
+	@Column(columnDefinition="BIGINT default 0")
+	private long referedCount;
 	
 	private Bookmark() {
 		
 	};
 	
-	public Bookmark(long bookmarkId, String tilte, String url, String overview, Set<Tag> tags, int referedCount) {
+	public Bookmark(long bookmarkId, String tilte, String url, String overview, Set<Tag> tags) {
 		this.bookmarkId = bookmarkId;
 		this.title = tilte;
 		this.url = url;
 		this.overview = overview;
 		this.tags = tags;
-		this.referedCount = referedCount;
 	}
 
 	public long getBookmarkId() {
@@ -60,7 +65,7 @@ public class Bookmark {
 		return tags;
 	}
 
-	public int getReferedCount() {
+	public long getReferedCount() {
 		return referedCount;
 	}
 

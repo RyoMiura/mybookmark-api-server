@@ -1,13 +1,15 @@
 package com.mybookmark.mybookmarkapi.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Tag {
@@ -16,8 +18,10 @@ public class Tag {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long tagId;
 	
+	@Column(length = 20)
 	private String name;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "tags")
 	private List<Bookmark> bookmarks;
 	
@@ -34,6 +38,7 @@ public class Tag {
 		return tagId;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -42,13 +47,5 @@ public class Tag {
 		return bookmarks;
 	}	
 	
-
-//	public void setTagId(long tagId) {
-//		this.tagId = tagId;
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
 	
 }

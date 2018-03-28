@@ -31,7 +31,7 @@ public class MybookmarkapiApplication {
 //							bookmarkRepository.save(new Bookmark(0, "aaa", "aaa", "", null, 0));
 //						});
 //		return (evt) -> { System.out.println("hello world"); };
-		return (evt) -> bookmarkRepository.save(new Bookmark(0, "aaa", "aaa", "", null, 0));
+		return (evt) -> bookmarkRepository.save(new Bookmark(0, "aaa", "aaa", "", null));
 	}
 	
 }
