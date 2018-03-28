@@ -6,8 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.mybookmark.mybookmarkapi.Repository.BookmarkRepository;
-import com.mybookmark.mybookmarkapi.model.Bookmark;
+import com.mybookmark.mybookmarkapi.entity.Bookmark;
+import com.mybookmark.mybookmarkapi.repository.BookmarkRepository;
 
 @SpringBootApplication
 public class MybookmarkapiApplication {

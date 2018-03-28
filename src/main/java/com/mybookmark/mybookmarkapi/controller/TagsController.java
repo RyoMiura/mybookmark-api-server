@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mybookmark.mybookmarkapi.model.Tag;
+import com.mybookmark.mybookmarkapi.entity.Tag;
 
 @RestController
 @RequestMapping(value = "/tags")

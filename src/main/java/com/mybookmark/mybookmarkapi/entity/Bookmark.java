@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.model;
+package com.mybookmark.mybookmarkapi.entity;
 
 import java.util.HashSet;
 import java.util.Set;
