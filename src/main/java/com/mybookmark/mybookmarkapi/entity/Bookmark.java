@@ -22,6 +22,7 @@ public class Bookmark {
 	@Column(length = 100)
 	private String title;
 
+	@Column(length = 300)
 	private String url;
 	
 	@Column(length = 300)

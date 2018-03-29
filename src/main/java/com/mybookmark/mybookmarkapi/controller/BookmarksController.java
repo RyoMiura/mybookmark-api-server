@@ -3,6 +3,8 @@ package com.mybookmark.mybookmarkapi.controller;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mybookmark.mybookmarkapi.entity.Bookmark;
+import com.mybookmark.mybookmarkapi.form.CreateBookmarkForm;
 
 @RestController
 @RequestMapping(value="/bookmarks")
@@ -28,12 +31,12 @@ public class BookmarksController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Bookmark createBookmark(@RequestBody Bookmark input) {
+	public CreateBookmarkForm createBookmark(@RequestBody @Valid CreateBookmarkForm input) {
 		return input;
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{bookmarkId}")
-	public Bookmark updateBookmark(@PathVariable String bookmarkId, @RequestBody Bookmark input) {
+	public CreateBookmarkForm updateBookmark(@PathVariable String bookmarkId, @RequestBody @Valid CreateBookmarkForm input) {
 		return input;
 	}
 	
