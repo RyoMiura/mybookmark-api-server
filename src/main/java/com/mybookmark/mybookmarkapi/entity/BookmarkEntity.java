@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Columns;
 
-@Entity
+@Entity(name="bookmark")
 public class BookmarkEntity {
 
 	@Id
@@ -29,7 +29,7 @@ public class BookmarkEntity {
 	private String overview;
 	
 	@OneToMany
-	private Set<TagEntity> tags = new HashSet<>();
+	private Set<TagEntity> tags;
 	
 	@Column(columnDefinition="BIGINT default 0")
 	private long referedCount;

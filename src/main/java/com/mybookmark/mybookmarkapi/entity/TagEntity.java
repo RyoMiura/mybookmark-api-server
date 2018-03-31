@@ -11,7 +11,7 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
+@Entity(name="tag")
 public class TagEntity {
 	
 	@Id
@@ -29,8 +29,7 @@ public class TagEntity {
 		
 	}
 	
-	public TagEntity(long tagId, String name) {
-		this.tagId = tagId;
+	public TagEntity(String name) {
 		this.name = name;
 	}
 
@@ -38,6 +37,9 @@ public class TagEntity {
 		return tagId;
 	}
 
+	public void setTagId(long tagId) {
+		this.tagId = tagId;
+	}
 	
 	public String getName() {
 		return name;

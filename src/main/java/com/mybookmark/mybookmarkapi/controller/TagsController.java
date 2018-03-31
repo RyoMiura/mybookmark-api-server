@@ -18,9 +18,6 @@ public class TagsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public Collection<TagEntity> readTags() {
 		ArrayList<TagEntity> tags = new ArrayList<>();
-		tags.add(new TagEntity(0, "java"));
-		tags.add(new TagEntity(1, "javascript"));
-		tags.add(new TagEntity(2, "google chrome"));
 		return tags;
 	}
 
