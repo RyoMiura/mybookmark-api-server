@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.form;
+package com.mybookmark.mybookmarkapi.web.form;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

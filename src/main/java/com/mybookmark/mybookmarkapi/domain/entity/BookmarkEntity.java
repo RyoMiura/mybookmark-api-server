@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.entity;
+package com.mybookmark.mybookmarkapi.domain.entity;
 
 import java.util.HashSet;
 import java.util.Set;

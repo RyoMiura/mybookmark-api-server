@@ -1,8 +1,8 @@
-package com.mybookmark.mybookmarkapi.repository;
+package com.mybookmark.mybookmarkapi.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.mybookmark.mybookmarkapi.entity.TagEntity;
+import com.mybookmark.mybookmarkapi.domain.entity.TagEntity;
 
 public interface TagRepository extends JpaRepository<TagEntity, Long> {
 

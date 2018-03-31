@@ -1,10 +1,10 @@
-package com.mybookmark.mybookmarkapi.repository;
+package com.mybookmark.mybookmarkapi.domain.repository;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.mybookmark.mybookmarkapi.entity.BookmarkEntity;
+import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
 
 public interface BookmarkRepository extends JpaRepository<BookmarkEntity, Long> {
 	Collection<BookmarkEntity> findByBookmarkId(int bookmarkId);

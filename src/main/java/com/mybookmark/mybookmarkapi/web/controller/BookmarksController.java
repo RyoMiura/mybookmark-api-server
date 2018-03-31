@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.controller;
+package com.mybookmark.mybookmarkapi.web.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mybookmark.mybookmarkapi.entity.BookmarkEntity;
-import com.mybookmark.mybookmarkapi.form.CreateBookmarkForm;
+import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
+import com.mybookmark.mybookmarkapi.web.form.CreateBookmarkForm;
 
 @RestController
 @RequestMapping(value="/bookmarks")

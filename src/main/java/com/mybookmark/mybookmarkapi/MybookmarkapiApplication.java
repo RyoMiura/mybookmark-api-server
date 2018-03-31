@@ -9,10 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.mybookmark.mybookmarkapi.entity.BookmarkEntity;
-import com.mybookmark.mybookmarkapi.entity.TagEntity;
-import com.mybookmark.mybookmarkapi.repository.BookmarkRepository;
-import com.mybookmark.mybookmarkapi.repository.TagRepository;
+import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
+import com.mybookmark.mybookmarkapi.domain.entity.TagEntity;
+import com.mybookmark.mybookmarkapi.domain.repository.BookmarkRepository;
+import com.mybookmark.mybookmarkapi.domain.repository.TagRepository;
 
 @SpringBootApplication
 public class MybookmarkapiApplication {
