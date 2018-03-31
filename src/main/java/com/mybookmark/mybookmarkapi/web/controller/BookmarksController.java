@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,9 @@ import com.mybookmark.mybookmarkapi.web.form.CreateBookmarkForm;
 @RestController
 @RequestMapping(value="/bookmarks")
 public class BookmarksController {
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@RequestMapping(method=RequestMethod.GET, value="/{bookmarkId}")
 	public BookmarkEntity readBookmark() {

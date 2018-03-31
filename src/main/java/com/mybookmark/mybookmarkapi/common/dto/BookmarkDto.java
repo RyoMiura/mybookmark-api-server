@@ -1,23 +1,14 @@
-package com.mybookmark.mybookmarkapi.web.form;
+package com.mybookmark.mybookmarkapi.common.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import java.util.Set;
 
-public class CreateBookmarkForm extends FormBean {
-	
-	@NotBlank
-	@Size(max=100)
+public class BookmarkDto {
+
 	private String title;
-
-	@NotBlank
-	@Size(max=300)
 	private String url;
+	private String overview;	
+	private Set<TagDto> tags;
 	
-	@Size(max=300)
-	private String overview;
-		
-	private long[] tags;
-
 	public String getTitle() {
 		return title;
 	}
@@ -30,7 +21,7 @@ public class CreateBookmarkForm extends FormBean {
 		return overview;
 	}
 
-	public long[] getTags() {
+	public Set<TagDto> getTags() {
 		return tags;
 	}
 
@@ -46,7 +37,7 @@ public class CreateBookmarkForm extends FormBean {
 		this.overview = overview;
 	}
 
-	public void setTags(long[] tags) {
+	public void setTags(Set<TagDto> tags) {
 		this.tags = tags;
 	}
 	

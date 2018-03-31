@@ -31,8 +31,8 @@ public class BookmarkEntity {
 	@OneToMany
 	private Set<TagEntity> tags;
 	
-	@Column(columnDefinition="BIGINT default 0")
-	private long referedCount;
+//	@Column(columnDefinition="BIGINT default 0")
+//	private long referedCount;
 	
 	private BookmarkEntity() {
 		
@@ -62,14 +62,14 @@ public class BookmarkEntity {
 		return overview;
 	}
 
+//	public long getReferedCount() {
+//		return referedCount;
+//	}
+
 	public Set<TagEntity> getTags() {
 		return tags;
 	}
-
-	public long getReferedCount() {
-		return referedCount;
-	}
-
+	
 //	public void setBookmarkId(long bookmarkId) {
 //		this.bookmarkId = bookmarkId;
 //	}
