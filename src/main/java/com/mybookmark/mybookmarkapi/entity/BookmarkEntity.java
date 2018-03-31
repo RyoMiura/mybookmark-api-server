@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Columns;
 
 @Entity
-public class Bookmark {
+public class BookmarkEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,16 +29,16 @@ public class Bookmark {
 	private String overview;
 	
 	@OneToMany
-	private Set<Tag> tags = new HashSet<>();
+	private Set<TagEntity> tags = new HashSet<>();
 	
 	@Column(columnDefinition="BIGINT default 0")
 	private long referedCount;
 	
-	private Bookmark() {
+	private BookmarkEntity() {
 		
 	};
 	
-	public Bookmark(long bookmarkId, String tilte, String url, String overview, Set<Tag> tags) {
+	public BookmarkEntity(long bookmarkId, String tilte, String url, String overview, Set<TagEntity> tags) {
 		this.bookmarkId = bookmarkId;
 		this.title = tilte;
 		this.url = url;
@@ -62,7 +62,7 @@ public class Bookmark {
 		return overview;
 	}
 
-	public Set<Tag> getTags() {
+	public Set<TagEntity> getTags() {
 		return tags;
 	}
 

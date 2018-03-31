@@ -4,8 +4,8 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.mybookmark.mybookmarkapi.entity.Bookmark;
+import com.mybookmark.mybookmarkapi.entity.BookmarkEntity;
 
-public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
-	Collection<Bookmark> findByBookmarkId(int bookmarkId);
+public interface BookmarkRepository extends JpaRepository<BookmarkEntity, Long> {
+	Collection<BookmarkEntity> findByBookmarkId(int bookmarkId);
 }

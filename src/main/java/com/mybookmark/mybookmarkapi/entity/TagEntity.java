@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Tag {
+public class TagEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,13 @@ public class Tag {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "tags")
-	private List<Bookmark> bookmarks;
+	private List<BookmarkEntity> bookmarks;
 	
-	private Tag() {
+	private TagEntity() {
 		
 	}
 	
-	public Tag(long tagId, String name) {
+	public TagEntity(long tagId, String name) {
 		this.tagId = tagId;
 		this.name = name;
 	}
@@ -43,7 +43,7 @@ public class Tag {
 		return name;
 	}
 
-	public List<Bookmark> getBookmarks() {
+	public List<BookmarkEntity> getBookmarks() {
 		return bookmarks;
 	}	
 	

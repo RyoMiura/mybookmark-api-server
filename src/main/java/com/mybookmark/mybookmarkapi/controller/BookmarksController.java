@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mybookmark.mybookmarkapi.entity.Bookmark;
+import com.mybookmark.mybookmarkapi.entity.BookmarkEntity;
 import com.mybookmark.mybookmarkapi.form.CreateBookmarkForm;
 
 @RestController
@@ -19,14 +19,14 @@ import com.mybookmark.mybookmarkapi.form.CreateBookmarkForm;
 public class BookmarksController {
 
 	@RequestMapping(method=RequestMethod.GET, value="/{bookmarkId}")
-	public Bookmark readBookmark() {
-		return new Bookmark(1, "google", "google.com", "google site", null);
+	public BookmarkEntity readBookmark() {
+		return new BookmarkEntity(1, "google", "google.com", "google site", null);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public Collection<Bookmark> readBookmarks() {
-		ArrayList<Bookmark> bookmarks = new ArrayList<>();
-		bookmarks.add(new Bookmark(1, "google", "google.com", "google site", null));
+	public Collection<BookmarkEntity> readBookmarks() {
+		ArrayList<BookmarkEntity> bookmarks = new ArrayList<>();
+		bookmarks.add(new BookmarkEntity(1, "google", "google.com", "google site", null));
 		return bookmarks;
 	}
 	
