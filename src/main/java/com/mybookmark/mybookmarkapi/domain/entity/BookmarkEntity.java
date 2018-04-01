@@ -1,6 +1,5 @@
 package com.mybookmark.mybookmarkapi.domain.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,12 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Columns;
 
 @Entity(name="bookmark")
-public class BookmarkEntity {
+public class BookmarkEntity extends EntityBean {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

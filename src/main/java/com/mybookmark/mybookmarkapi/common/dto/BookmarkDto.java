@@ -4,11 +4,17 @@ import java.util.Set;
 
 public class BookmarkDto extends DtoBean {
 
+	private long bookmarkId;
 	private String title;
 	private String url;
 	private String overview;	
 	private Set<TagDto> tags;
 	
+		
+	public long getBookmarkId() {
+		return bookmarkId;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -23,6 +29,10 @@ public class BookmarkDto extends DtoBean {
 
 	public Set<TagDto> getTags() {
 		return tags;
+	}
+
+	public void setBookmarkId(long bookmarkId) {
+		this.bookmarkId = bookmarkId;
 	}
 
 	public void setTitle(String title) {

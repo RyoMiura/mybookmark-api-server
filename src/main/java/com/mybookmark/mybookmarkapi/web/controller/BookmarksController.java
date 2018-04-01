@@ -30,15 +30,13 @@ public class BookmarksController {
 	private BookmarkService bookmarkService;
 
 	@RequestMapping(method=RequestMethod.GET, value="/{bookmarkId}")
-	public BookmarkEntity readBookmark() {
-		return new BookmarkEntity(1, "google", "google.com", "google site", null);
+	public BookmarkDto readBookmark(@PathVariable long bookmarkId) {
+		return bookmarkService.readBookmark(bookmarkId);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public Collection<BookmarkEntity> readBookmarks() {
-		ArrayList<BookmarkEntity> bookmarks = new ArrayList<>();
-		bookmarks.add(new BookmarkEntity(1, "google", "google.com", "google site", null));
-		return bookmarks;
+	public Collection<BookmarkDto> readBookmarks() {
+		return bookmarkService.readBookmarks();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

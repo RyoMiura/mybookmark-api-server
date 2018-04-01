@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="tag")
-public class TagEntity {
+public class TagEntity extends EntityBean {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
