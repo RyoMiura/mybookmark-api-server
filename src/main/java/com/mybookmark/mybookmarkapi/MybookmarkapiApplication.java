@@ -20,17 +20,11 @@ import com.mybookmark.mybookmarkapi.domain.entity.TagEntity;
 import com.mybookmark.mybookmarkapi.domain.repository.BookmarkRepository;
 import com.mybookmark.mybookmarkapi.domain.repository.TagRepository;
 import com.mybookmark.mybookmarkapi.web.form.CreateBookmarkForm;
-import com.mybookmark.mybookmarkapi.web.util.converter.BeanMapper;
+import com.mybookmark.mybookmarkapi.web.util.converter.DtoFormMapper;
 
 @SpringBootApplication
 public class MybookmarkapiApplication {
-
-	@Autowired
-	private ModelMapper modelMapper;
-	
-	@Autowired
-	private BeanMapper beanMapper;
-	
+		
 	public static void main(String[] args) {
 		SpringApplication.run(MybookmarkapiApplication.class, args);
 	}
@@ -43,45 +37,12 @@ public class MybookmarkapiApplication {
 	 */
 	@Bean
 	public CommandLineRunner init(BookmarkRepository bookmarkRepository, TagRepository tagRepository) {
-		
-		
-//		System.out.println(dto.getTitle());
-//		System.out.println(dto.getUrl());
-//		dto.getTags().forEach((tag) -> {System.out.println(tag.getName());});
-			
+					
 		return (evt) -> {
-			CreateBookmarkForm bookmark = new CreateBookmarkForm();
-			bookmark.setTitle("hello");
-			bookmark.setUrl("url");
-			long[] ids = { 1, 2 };
-			bookmark.setTags(ids);
-			
-//			modelMapper.addConverter(new Converter<Long, TagDto>() {
-//
-//				@Override
-//				public TagDto convert(MappingContext<Long, TagDto> context) {
-//					TagDto dto = new TagDto(); dto.setTagId(context.getSource());
-//					return dto;
-//				}
-//			});
-//			
-//			BeanMapper beanMapper = new BeanMapper();
-//			BeanMapper beanMapper2 = new BeanMapper();
-//			System.out.println(BookmarkDto.class);
-//			BookmarkDto dto = modelMapper.map(bookmark, BookmarkDto.class);
-			System.out.println(beanMapper);
-			BookmarkDto dto = beanMapper.fromFormToDto(bookmark, BookmarkDto.class);
-			dto.getTags().forEach((tag) -> { System.out.println(tag.getTagId()); });
-
 			
 			tagRepository.save(new TagEntity("google"));
 			tagRepository.save(new TagEntity("ie"));
 
-			Set<TagEntity> tags = new HashSet<>();
-			TagEntity tag = new TagEntity(null); tag.setTagId(1);
-			tags.add(tag);
-
-			bookmarkRepository.save(new BookmarkEntity(0, "aaa", "aaa", "", tags));
 		};
 	}
 	

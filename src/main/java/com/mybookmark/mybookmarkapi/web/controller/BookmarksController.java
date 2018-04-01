@@ -13,15 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mybookmark.mybookmarkapi.common.dto.BookmarkDto;
 import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
+import com.mybookmark.mybookmarkapi.domain.service.BookmarkService;
 import com.mybookmark.mybookmarkapi.web.form.CreateBookmarkForm;
+import com.mybookmark.mybookmarkapi.web.util.converter.DtoFormMapper;
 
 @RestController
 @RequestMapping(value="/bookmarks")
 public class BookmarksController {
 	
 	@Autowired
-	private ModelMapper modelMapper;
+	private DtoFormMapper dtoFormMapper;
+	
+	@Autowired
+	private BookmarkService bookmarkService;
 
 	@RequestMapping(method=RequestMethod.GET, value="/{bookmarkId}")
 	public BookmarkEntity readBookmark() {
@@ -36,13 +42,15 @@ public class BookmarksController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public CreateBookmarkForm createBookmark(@RequestBody @Valid CreateBookmarkForm input) {
-		return input;
+	public void createBookmark(@RequestBody @Valid CreateBookmarkForm input) {
+		BookmarkDto dto = dtoFormMapper.fromFormToDto(input, BookmarkDto.class);
+		bookmarkService.createBookmark(dto);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{bookmarkId}")
-	public CreateBookmarkForm updateBookmark(@PathVariable String bookmarkId, @RequestBody @Valid CreateBookmarkForm input) {
-		return input;
+	public void updateBookmark(@PathVariable String bookmarkId, @RequestBody @Valid CreateBookmarkForm input) {
+		BookmarkDto dto = dtoFormMapper.fromFormToDto(input, BookmarkDto.class);
+		System.out.println(dto.getTitle());
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{bookmarkId}")

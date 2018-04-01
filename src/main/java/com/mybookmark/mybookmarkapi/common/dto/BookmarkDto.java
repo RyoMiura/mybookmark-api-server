@@ -2,7 +2,7 @@ package com.mybookmark.mybookmarkapi.common.dto;
 
 import java.util.Set;
 
-public class BookmarkDto {
+public class BookmarkDto extends DtoBean {
 
 	private String title;
 	private String url;

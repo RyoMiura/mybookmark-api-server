@@ -37,10 +37,6 @@ public class TagEntity {
 		return tagId;
 	}
 
-	public void setTagId(long tagId) {
-		this.tagId = tagId;
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -48,6 +44,19 @@ public class TagEntity {
 	public List<BookmarkEntity> getBookmarks() {
 		return bookmarks;
 	}	
+	
+	public void setTagId(long tagId) {
+		this.tagId = tagId;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setBookmarks(List<BookmarkEntity> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+	
 	
 	
 }

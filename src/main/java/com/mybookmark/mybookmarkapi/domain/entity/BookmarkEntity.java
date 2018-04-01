@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Columns;
@@ -28,12 +29,9 @@ public class BookmarkEntity {
 	@Column(length = 300)
 	private String overview;
 	
-	@OneToMany
+	@ManyToMany
 	private Set<TagEntity> tags;
-	
-//	@Column(columnDefinition="BIGINT default 0")
-//	private long referedCount;
-	
+		
 	private BookmarkEntity() {
 		
 	};
@@ -50,7 +48,7 @@ public class BookmarkEntity {
 		return bookmarkId;
 	}
 
-	public String getTilte() {
+	public String getTitle() {
 		return title;
 	}
 
@@ -62,36 +60,28 @@ public class BookmarkEntity {
 		return overview;
 	}
 
-//	public long getReferedCount() {
-//		return referedCount;
-//	}
-
 	public Set<TagEntity> getTags() {
 		return tags;
 	}
 	
-//	public void setBookmarkId(long bookmarkId) {
-//		this.bookmarkId = bookmarkId;
-//	}
-//
-//	public void setTilte(String tilte) {
-//		this.tilte = tilte;
-//	}
-//
-//	public void setUrl(String url) {
-//		this.url = url;
-//	}
-//
-//	public void setOverview(String overview) {
-//		this.overview = overview;
-//	}
-//
-//	public void setTags(Set<Tag> tags) {
-//		this.tags = tags;
-//	}
-//
-//	public void setReferedCount(int referedCount) {
-//		this.referedCount = referedCount;
-//	}
+	public void setBookmarkId(long bookmarkId) {
+		this.bookmarkId = bookmarkId;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+
+	public void setTags(Set<TagEntity> tags) {
+		this.tags = tags;
+	}
 
 }

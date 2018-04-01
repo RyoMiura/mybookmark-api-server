@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import com.mybookmark.mybookmarkapi.web.form.FormBean;
 
 @Component
-public class BeanMapper {
+public class DtoFormMapper {
 
 	private ModelMapper modelMapper;
 	
 	@Autowired
-	public BeanMapper(ModelMapper modelMapper) {
+	public DtoFormMapper(ModelMapper modelMapper) {
 		// TODO Auto-generated constructor stub
 		this.modelMapper = modelMapper;
 		modelMapper.addConverter(new TagIdConvertRule());
