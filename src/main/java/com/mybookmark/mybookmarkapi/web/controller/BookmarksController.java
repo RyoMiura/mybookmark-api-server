@@ -1,11 +1,9 @@
 package com.mybookmark.mybookmarkapi.web.controller;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mybookmark.mybookmarkapi.common.dto.BookmarkDto;
-import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
 import com.mybookmark.mybookmarkapi.domain.service.BookmarkService;
 import com.mybookmark.mybookmarkapi.web.form.CreateBookmarkForm;
 import com.mybookmark.mybookmarkapi.web.util.converter.DtoFormMapper;
@@ -46,14 +43,14 @@ public class BookmarksController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{bookmarkId}")
-	public void updateBookmark(@PathVariable String bookmarkId, @RequestBody @Valid CreateBookmarkForm input) {
+	public void updateBookmark(@PathVariable long bookmarkId, @RequestBody @Valid CreateBookmarkForm input) {
 		BookmarkDto dto = dtoFormMapper.fromFormToDto(input, BookmarkDto.class);
-		System.out.println(dto.getTitle());
+		bookmarkService.updateBookmark(bookmarkId, dto);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{bookmarkId}")
-	public void deleteBookmark(@PathVariable String bookmarkId) {
-		System.out.println(bookmarkId);
+	public void deleteBookmark(@PathVariable long bookmarkId) {
+		bookmarkService.deleteBookmark(bookmarkId);
 	}
 	
 }

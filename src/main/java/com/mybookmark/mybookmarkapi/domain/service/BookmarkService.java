@@ -12,6 +12,7 @@ import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
 import com.mybookmark.mybookmarkapi.domain.repository.BookmarkRepository;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 
+// TODO: DBExceptionに関するコードを追加する。
 @Service
 public class BookmarkService {
 
@@ -38,5 +39,17 @@ public class BookmarkService {
 	public void createBookmark(BookmarkDto dto) {
 		BookmarkEntity entity = dtoEntityMapper.fromDtoToEntity(dto, BookmarkEntity.class);
 		bookmarkRepository.save(entity);
+	}
+	
+	// TODO: bookmarkIdが一致するレコードが無い場合は、失敗するようにしたい。
+	public void updateBookmark(long bookmarkId, BookmarkDto dto) {
+		BookmarkEntity entity = dtoEntityMapper.fromDtoToEntity(dto, BookmarkEntity.class);
+		entity.setBookmarkId(bookmarkId);
+		bookmarkRepository.save(entity);
+	}
+	
+	
+	public void deleteBookmark(long bookmarkId) {
+		bookmarkRepository.deleteById(bookmarkId);
 	}
 }
