@@ -40,8 +40,8 @@ public class MybookmarkapiApplication {
 					
 		return (evt) -> {
 			
-			tagRepository.save(new TagEntity("google"));
-			tagRepository.save(new TagEntity("ie"));
+//			tagRepository.save(new TagEntity("google"));
+//			tagRepository.save(new TagEntity("ie"));
 
 		};
 	}

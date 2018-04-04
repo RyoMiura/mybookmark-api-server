@@ -3,7 +3,7 @@ package com.mybookmark.mybookmarkapi.web.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mybookmark.mybookmarkapi.web.error.exception.HttpBadConextPathException;
+import com.mybookmark.mybookmarkapi.common.error.exception.HttpBadConextPathException;
 
 
 @RestController

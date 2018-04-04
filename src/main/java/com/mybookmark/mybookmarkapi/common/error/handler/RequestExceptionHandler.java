@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.web.error.handler;
+package com.mybookmark.mybookmarkapi.common.error.handler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import com.mybookmark.mybookmarkapi.web.error.exception.HttpBadConextPathException;
+import com.mybookmark.mybookmarkapi.common.error.exception.HttpBadConextPathException;
 
 
 @ControllerAdvice
@@ -24,6 +24,7 @@ public class RequestExceptionHandler {
 	@ResponseBody
 	public Map<String, Object> handleValidationError() {
 		Map<String, Object> errorMap = new HashMap<String, Object>();
+		errorMap.put("Status", HttpStatus.BAD_REQUEST.toString());
 		errorMap.put("message", "invalid json value");
 		return errorMap;
 	}
@@ -34,6 +35,7 @@ public class RequestExceptionHandler {
 	@ResponseBody
 	public Map<String, Object> handleContextPathError() {
 		Map<String, Object> errorMap = new HashMap<String, Object>();
+		errorMap.put("Status", HttpStatus.BAD_REQUEST.toString());
 		errorMap.put("message", "not useable resource path");
 		return errorMap;
 	}
@@ -44,6 +46,7 @@ public class RequestExceptionHandler {
 	@ResponseBody
 	public Map<String, Object> handleMethodNotSupportedError() {
 		Map<String, Object> errorMap = new HashMap<String, Object>();
+		errorMap.put("Status", HttpStatus.METHOD_NOT_ALLOWED.toString());
 		errorMap.put("message", "method not allowed");
 		return errorMap;
 	}
