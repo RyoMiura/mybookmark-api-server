@@ -40,14 +40,14 @@ public class TagService {
 	}
 
 	public boolean updateTag(long tagId, TagDto dto) {
-		TagEntity entity = dtoEntityMapper.fromDtoToEntity(dto, TagEntity.class);
-		if (entity != null) {
+		TagEntity hasEntity = tagRepository.findByTagId(tagId);
+		if (hasEntity != null) {
+			TagEntity entity = dtoEntityMapper.fromDtoToEntity(dto, TagEntity.class);
 			entity.setTagId(tagId);
 			tagRepository.save(entity);
 			return true;
 		} else {
 			return false;
-//			throw new NotFoundDBResourceException();
 		}
 	}
 
