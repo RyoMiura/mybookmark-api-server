@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mybookmark.mybookmarkapi.common.dto.TagDto;
+import com.mybookmark.mybookmarkapi.common.error.exception.NotFoundDBResourceException;
 import com.mybookmark.mybookmarkapi.domain.entity.TagEntity;
 import com.mybookmark.mybookmarkapi.domain.service.TagService;
 import com.mybookmark.mybookmarkapi.web.form.CreateTagForm;
@@ -39,7 +40,11 @@ public class TagsController {
 	@RequestMapping(method = RequestMethod.PUT, value="/{tagId}")
 	public void updateTag(@PathVariable long tagId, @RequestBody CreateTagForm input) {
 		TagDto dto = dtoFormMapper.fromFormToDto(input, TagDto.class);
-		tagService.updateTag(tagId, dto);
+		boolean isSuccess = tagService.updateTag(tagId, dto);
+		if (!isSuccess) {
+			throw new NotFoundDBResourceException();
+		}
+
 	}
 
 }

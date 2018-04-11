@@ -3,6 +3,8 @@ package com.mybookmark.mybookmarkapi.common.error.handler;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,7 +18,7 @@ import com.mybookmark.mybookmarkapi.common.error.exception.NotFoundDBResourceExc
 public class DBAccessExceptionHandler {
 
 	@ResponseStatus(HttpStatus.CONFLICT)
-	@ExceptionHandler({ DuplicateDBValueException.class })
+	@ExceptionHandler({ DataIntegrityViolationException.class })
 	@ResponseBody
 	public Map<String, String> handleDuplicateDBValueError() {
 		Map<String, String> errorMap = new HashMap<String, String>();
@@ -26,7 +28,7 @@ public class DBAccessExceptionHandler {
 	}
 	
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ExceptionHandler({ NotFoundDBResourceException.class })
+	@ExceptionHandler({ NotFoundDBResourceException.class, EmptyResultDataAccessException.class })
 	@ResponseBody
 	public Map<String, String> handleNotFoundDBResourceError() {
 		Map<String, String> errorMap = new HashMap<String, String>();

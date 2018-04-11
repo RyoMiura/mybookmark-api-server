@@ -17,7 +17,6 @@ import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 
 import javassist.NotFoundException;
 
-// TODO: DBExceptionに関するコードを追加する。
 @Service
 public class BookmarkService {
 
@@ -25,16 +24,16 @@ public class BookmarkService {
 	private BookmarkRepository bookmarkRepository;
 	@Autowired
 	private DtoEntityMapper dtoEntityMapper;
-	
+
 	public BookmarkDto readBookmark(long bookmarkId) {
 		BookmarkEntity entity = bookmarkRepository.findByBookmarkId(bookmarkId);
 		if (entity != null) {
 			return dtoEntityMapper.fromEntityToDto(entity, BookmarkDto.class);
 		} else {
-			throw new NotFoundDBResourceException();
+			return null;
 		}
 	}
-	
+
 	public Collection<BookmarkDto> readBookmarks() {
 		List<BookmarkEntity> entities = bookmarkRepository.findAll();
 		List<BookmarkDto> dtos = new ArrayList<>();
@@ -43,29 +42,25 @@ public class BookmarkService {
 		});
 		return dtos;
 	}
-	
+
 	public void createBookmark(BookmarkDto dto) {
 		BookmarkEntity entity = dtoEntityMapper.fromDtoToEntity(dto, BookmarkEntity.class);
 		bookmarkRepository.save(entity);
 	}
-	
-	public void updateBookmark(long bookmarkId, BookmarkDto dto) {
+
+	public boolean updateBookmark(long bookmarkId, BookmarkDto dto) {
 		BookmarkEntity hasEntity = bookmarkRepository.findByBookmarkId(bookmarkId);
 		if (hasEntity != null) {
 			BookmarkEntity entity = dtoEntityMapper.fromDtoToEntity(dto, BookmarkEntity.class);
 			entity.setBookmarkId(bookmarkId);
 			bookmarkRepository.save(entity);
+			return true;
 		} else {
-			throw new NotFoundDBResourceException();
+			return false;
 		}
 	}
-	
-	
+
 	public void deleteBookmark(long bookmarkId) {
-		try {
-			bookmarkRepository.deleteById(bookmarkId);			
-		} catch(EmptyResultDataAccessException e) {
-			throw new NotFoundDBResourceException();
-		}
+		bookmarkRepository.deleteById(bookmarkId);
 	}
 }

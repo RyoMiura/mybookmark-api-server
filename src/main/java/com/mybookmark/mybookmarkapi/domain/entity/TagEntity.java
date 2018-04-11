@@ -14,15 +14,16 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity(name="tag")
+@Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames="name"))
 public class TagEntity extends EntityBean {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false)
 	private long tagId;
 	
-	@Column(length = 20)
+	@Column(length = 20, nullable = false)
 	private String name;
 	
 	@JsonIgnore

@@ -21,10 +21,10 @@ public class TagService {
 
 	@Autowired
 	private TagRepository tagRepository;
-	
+
 	@Autowired
 	private DtoEntityMapper dtoEntityMapper;
-	
+
 	public Collection<TagDto> readTags() {
 		List<TagEntity> entities = tagRepository.findAll();
 		List<TagDto> dtos = new ArrayList<>();
@@ -33,24 +33,22 @@ public class TagService {
 		});
 		return dtos;
 	}
-		
+
 	public void createTag(TagDto dto) {
-		try {
-			TagEntity entity = dtoEntityMapper.fromDtoToEntity(dto, TagEntity.class);
-			tagRepository.save(entity);			
-		} catch (DataIntegrityViolationException e) {
-			throw new DuplicateDBValueException();
-		}
+		TagEntity entity = dtoEntityMapper.fromDtoToEntity(dto, TagEntity.class);
+		tagRepository.save(entity);
 	}
-	
-	public void updateTag(long tagId, TagDto dto) {
+
+	public boolean updateTag(long tagId, TagDto dto) {
 		TagEntity entity = dtoEntityMapper.fromDtoToEntity(dto, TagEntity.class);
 		if (entity != null) {
 			entity.setTagId(tagId);
-			tagRepository.save(entity);			
+			tagRepository.save(entity);
+			return true;
 		} else {
-			throw new NotFoundDBResourceException();
+			return false;
+//			throw new NotFoundDBResourceException();
 		}
 	}
-	
+
 }

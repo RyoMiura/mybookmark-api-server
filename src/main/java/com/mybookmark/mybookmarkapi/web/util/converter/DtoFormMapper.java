@@ -2,26 +2,35 @@ package com.mybookmark.mybookmarkapi.web.util.converter;
 
 import java.lang.reflect.Type;
 
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.spi.MappingContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mybookmark.mybookmarkapi.common.dto.TagDto;
 import com.mybookmark.mybookmarkapi.web.form.FormBean;
 
 @Component
-public class DtoFormMapper {
+public class DtoFormMapper implements Converter<Long, TagDto> {
 
 	private ModelMapper modelMapper;
 	
 	@Autowired
 	public DtoFormMapper(ModelMapper modelMapper) {
-		// TODO Auto-generated constructor stub
 		this.modelMapper = modelMapper;
-		modelMapper.addConverter(new TagIdConvertRule());
+		modelMapper.addConverter(this);
 	}
 	
 	public <T extends FormBean, D> D fromFormToDto(T source, Type destinationType) {
 		return modelMapper.map(source, destinationType);
+	}
+
+	
+	@Override
+	public TagDto convert(MappingContext<Long, TagDto> context) {
+		TagDto dto = new TagDto(); dto.setTagId(context.getSource());
+		return dto;
 	}
 	
 }
