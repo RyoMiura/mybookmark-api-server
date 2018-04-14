@@ -12,6 +12,7 @@ import com.mybookmark.mybookmarkapi.domain.entity.EntityBean;
 @Component
 public class DtoEntityMapper {
 
+	@Autowired
 	private ModelMapper modelMapper;
 
 	@Autowired
