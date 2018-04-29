@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames="loginId"))
 public class UserEntity extends EntityBean implements UserDetails {
 
+	private static final long serialVersionUID = -138755376204744163L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)

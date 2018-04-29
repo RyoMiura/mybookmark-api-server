@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
 public class BookmarkEntity extends EntityBean {
@@ -29,18 +28,6 @@ public class BookmarkEntity extends EntityBean {
 
 	@ManyToMany
 	private Set<TagEntity> tags;
-
-	private BookmarkEntity() {
-
-	};
-
-	public BookmarkEntity(long bookmarkId, String tilte, String url, String overview, Set<TagEntity> tags) {
-		this.bookmarkId = bookmarkId;
-		this.title = tilte;
-		this.url = url;
-		this.overview = overview;
-		this.tags = tags;
-	}
 
 	public long getBookmarkId() {
 		return bookmarkId;

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.mybookmark.mybookmarkapi.common.error.exception.DuplicateDBValueException;
 import com.mybookmark.mybookmarkapi.common.error.exception.NotFoundDBResourceException;
 
 @ControllerAdvice

@@ -1,21 +1,16 @@
 package com.mybookmark.mybookmarkapi.domain.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.mybookmark.mybookmarkapi.common.dto.BookmarkDto;
-import com.mybookmark.mybookmarkapi.common.error.exception.NotFoundDBResourceException;
 import com.mybookmark.mybookmarkapi.domain.entity.BookmarkEntity;
 import com.mybookmark.mybookmarkapi.domain.repository.BookmarkRepository;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
-
-import javassist.NotFoundException;
 
 @Service
 public class BookmarkService {

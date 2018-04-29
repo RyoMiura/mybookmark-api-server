@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -24,23 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserService userService;
-	
-//	@Autowired
-//	private PasswordEncoder passwordEncoder;
 
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
-//		return NoOpPasswordEncoder.getInstance();	// テスト用
 		return new BCryptPasswordEncoder();
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder)
-//			.withUser("admin").password("admin").roles("ADMIN")
-//			.and()
-//			.withUser("user1").password("user1").roles("USER");
-		
 		auth
 			.userDetailsService(userService)
 			.passwordEncoder(getPasswordEncoder());		
@@ -55,18 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 			.addFilter(new JWTAuthorizationFilter(authenticationManager()))
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-		// basic任種
-//		http.httpBasic().and()
-//			.authorizeRequests()
-//				.antMatchers("/bookmarks").hasAuthority("ADMIN")
-//				.antMatchers("/tags").hasAuthority("USER")
-//				.anyRequest().authenticated();
-////				.antMatchers("/**").hasRole("USER")
-////				.and()
-////				.csrf().disable()
-////				.headers().frameOptions().disable();
-//		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
 	@Bean
@@ -75,5 +53,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 	    return source;
 	}
-	
 }

@@ -30,14 +30,7 @@ public class TagEntity extends EntityBean {
 	@ManyToMany(mappedBy = "tags")
 	private List<BookmarkEntity> bookmarks;
 	
-	private TagEntity() {
-		
-	}
 	
-	public TagEntity(String name) {
-		this.name = name;
-	}
-
 	public long getTagId() {
 		return tagId;
 	}
