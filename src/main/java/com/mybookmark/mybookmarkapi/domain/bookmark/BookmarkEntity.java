@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.domain.entity;
+package com.mybookmark.mybookmarkapi.domain.bookmark;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class BookmarkEntity extends EntityBean {
+public class BookmarkEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

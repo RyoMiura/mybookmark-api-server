@@ -1,6 +1,6 @@
-package com.mybookmark.mybookmarkapi.web.form;
+package com.mybookmark.mybookmarkapi.web.util.secure;
 
-public class LoginForm extends FormBean {
+public class LoginForm {
 
 	private String loginId;
 	private String password;

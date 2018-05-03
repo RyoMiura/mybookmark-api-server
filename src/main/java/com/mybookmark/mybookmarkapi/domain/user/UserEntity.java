@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.domain.entity;
+package com.mybookmark.mybookmarkapi.domain.user;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames="loginId"))
-public class UserEntity extends EntityBean implements UserDetails {
+public class UserEntity implements UserDetails {
 
 	private static final long serialVersionUID = -138755376204744163L;
 
@@ -37,7 +37,7 @@ public class UserEntity extends EntityBean implements UserDetails {
 	private String password;
 	
 	@ManyToOne(optional = false)
-	private AuthorityEntity authority;
+	private RoleEntity authority;
 
 	
 	public long getUserId() {
@@ -53,7 +53,7 @@ public class UserEntity extends EntityBean implements UserDetails {
 		return password;
 	}
 
-	public AuthorityEntity getAuthority() {
+	public RoleEntity getAuthority() {
 		return authority;
 	}
 
@@ -70,7 +70,7 @@ public class UserEntity extends EntityBean implements UserDetails {
 		this.password = password;
 	}
 	
-	public void setAuthority(AuthorityEntity authority) {
+	public void setAuthority(RoleEntity authority) {
 		this.authority = authority;
 	}
 

@@ -1,7 +1,7 @@
 package com.mybookmark.mybookmarkapi.common.dto;
 
 
-public class TagDto extends DtoBean {
+public class TagDto {
 	
 	private long tagId;	
 	private String name;

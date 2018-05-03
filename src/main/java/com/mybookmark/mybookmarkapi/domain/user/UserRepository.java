@@ -1,8 +1,6 @@
-package com.mybookmark.mybookmarkapi.domain.repository;
+package com.mybookmark.mybookmarkapi.domain.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mybookmark.mybookmarkapi.domain.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findByLoginId(String loginId);

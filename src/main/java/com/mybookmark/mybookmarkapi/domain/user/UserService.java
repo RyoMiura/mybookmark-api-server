@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.domain.service;
+package com.mybookmark.mybookmarkapi.domain.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,10 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mybookmark.mybookmarkapi.common.dto.UserDto;
-import com.mybookmark.mybookmarkapi.domain.entity.AuthorityEntity;
-import com.mybookmark.mybookmarkapi.domain.entity.UserEntity;
-import com.mybookmark.mybookmarkapi.domain.repository.AuthorityRepository;
-import com.mybookmark.mybookmarkapi.domain.repository.UserRepository;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 
 @Service
@@ -21,7 +17,7 @@ public class UserService implements UserDetailsService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private AuthorityRepository authorityRepository;
+	private RoleRepository authorityRepository;
 	
 	@Autowired
 	private DtoEntityMapper dtoEntityMapper;
@@ -44,7 +40,7 @@ public class UserService implements UserDetailsService {
 
 		// UserDtoの中だとAutowiredできないから、仕方なくここでパスワード変換
 		entity.setPassword(passwordEncoder.encode(entity.getPassword()));
-		AuthorityEntity auth = authorityRepository.findByRole("USER");
+		RoleEntity auth = authorityRepository.findByRole("USER");
 		entity.setAuthority(auth);
 		
 		userRepository.save(entity);

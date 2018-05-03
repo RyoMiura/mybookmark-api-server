@@ -1,6 +1,6 @@
 package com.mybookmark.mybookmarkapi.common.dto;
 
-public class UserDto extends DtoBean {
+public class UserDto {
 	
 	private long userId;	
 	private String loginId;

@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.domain.service;
+package com.mybookmark.mybookmarkapi.domain.bookmark;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mybookmark.mybookmarkapi.common.dto.TagDto;
-import com.mybookmark.mybookmarkapi.domain.entity.TagEntity;
-import com.mybookmark.mybookmarkapi.domain.repository.TagRepository;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 
 @Service

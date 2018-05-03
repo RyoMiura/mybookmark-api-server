@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mybookmark.mybookmarkapi.common.dto.TagDto;
-import com.mybookmark.mybookmarkapi.web.form.FormBean;
 
 @Component
 public class DtoFormMapper implements Converter<Long, TagDto> {
@@ -22,7 +21,7 @@ public class DtoFormMapper implements Converter<Long, TagDto> {
 		modelMapper.addConverter(this);
 	}
 	
-	public <T extends FormBean, D> D fromFormToDto(T source, Type destinationType) {
+	public <T, D> D fromFormToDto(T source, Type destinationType) {
 		return modelMapper.map(source, destinationType);
 	}
 

@@ -1,9 +1,9 @@
-package com.mybookmark.mybookmarkapi.web.form;
+package com.mybookmark.mybookmarkapi.web.bookmark;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class CreateBookmarkForm extends FormBean {
+public class CreateBookmarkForm {
 	
 	@NotBlank
 	@Size(max=100)

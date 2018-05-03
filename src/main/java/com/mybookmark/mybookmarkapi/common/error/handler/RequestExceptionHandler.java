@@ -18,7 +18,7 @@ import com.mybookmark.mybookmarkapi.common.error.exception.HttpBadConextPathExce
 
 @ControllerAdvice
 public class RequestExceptionHandler {
-
+	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler({ MethodArgumentNotValidException.class, HttpMessageNotReadableException.class })
 	@ResponseBody

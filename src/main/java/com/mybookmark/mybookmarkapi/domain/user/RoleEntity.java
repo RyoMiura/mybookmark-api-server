@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.domain.entity;
+package com.mybookmark.mybookmarkapi.domain.user;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class AuthorityEntity extends EntityBean {
+public class RoleEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +23,9 @@ public class AuthorityEntity extends EntityBean {
 	private Set<UserEntity> userEntities;
 
 	
-	public AuthorityEntity() {}
+	public RoleEntity() {}
 	
-	public AuthorityEntity(String role) {
+	public RoleEntity(String role) {
 		this.role = role;
 	}
 	

@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.mybookmark.mybookmarkapi.common.dto.UserDto;
-import com.mybookmark.mybookmarkapi.domain.entity.AuthorityEntity;
-import com.mybookmark.mybookmarkapi.domain.repository.AuthorityRepository;
-import com.mybookmark.mybookmarkapi.domain.service.UserService;
+import com.mybookmark.mybookmarkapi.domain.user.RoleEntity;
+import com.mybookmark.mybookmarkapi.domain.user.RoleRepository;
+import com.mybookmark.mybookmarkapi.domain.user.UserService;
 
 @SpringBootApplication
 public class MybookmarkapiApplication {
@@ -24,12 +24,12 @@ public class MybookmarkapiApplication {
 	 * @return
 	 */
 	@Bean
-	public CommandLineRunner init(AuthorityRepository authorityRepository, UserService userService) {
+	public CommandLineRunner init(RoleRepository authorityRepository, UserService userService) {
 					
 		return (evt) -> {
 			
-			authorityRepository.save(new AuthorityEntity("ADMIN"));
-			authorityRepository.save(new AuthorityEntity("USER"));
+			authorityRepository.save(new RoleEntity("ADMIN"));
+			authorityRepository.save(new RoleEntity("USER"));
 			
 			UserDto user1 = new UserDto();
 			user1.setLoginId("myuser");

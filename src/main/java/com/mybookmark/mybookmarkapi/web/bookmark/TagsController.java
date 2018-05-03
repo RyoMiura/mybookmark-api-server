@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.web.controller;
+package com.mybookmark.mybookmarkapi.web.bookmark;
 
 import java.util.Collection;
 
@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mybookmark.mybookmarkapi.common.dto.TagDto;
 import com.mybookmark.mybookmarkapi.common.error.exception.NotFoundDBResourceException;
-import com.mybookmark.mybookmarkapi.domain.service.TagService;
-import com.mybookmark.mybookmarkapi.web.form.CreateTagForm;
+import com.mybookmark.mybookmarkapi.domain.bookmark.TagService;
 import com.mybookmark.mybookmarkapi.web.util.converter.DtoFormMapper;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.domain.entity;
+package com.mybookmark.mybookmarkapi.domain.bookmark;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames="name"))
-public class TagEntity extends EntityBean {
+public class TagEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

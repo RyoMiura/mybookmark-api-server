@@ -1,9 +1,9 @@
-package com.mybookmark.mybookmarkapi.web.form;
+package com.mybookmark.mybookmarkapi.web.bookmark;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class CreateTagForm extends FormBean {
+public class CreateTagForm {
 	
 	@NotBlank
 	@Size(max=20)
