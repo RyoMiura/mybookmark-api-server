@@ -36,8 +36,7 @@ public class UserEntity implements UserDetails {
 	@Column(nullable = false)
 	private String password;
 	
-	@ManyToOne(optional = false)
-	private RoleEntity authority;
+	private String role;
 
 	
 	public long getUserId() {
@@ -53,8 +52,8 @@ public class UserEntity implements UserDetails {
 		return password;
 	}
 
-	public RoleEntity getAuthority() {
-		return authority;
+	public String getRole() {
+		return role;
 	}
 
 		
@@ -70,15 +69,15 @@ public class UserEntity implements UserDetails {
 		this.password = password;
 	}
 	
-	public void setAuthority(RoleEntity authority) {
-		this.authority = authority;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authorities = new HashSet<>();
-		authorities.add(new SimpleGrantedAuthority(authority.getRole()));
+		authorities.add(new SimpleGrantedAuthority(role));
 		return authorities;
 	}
 
