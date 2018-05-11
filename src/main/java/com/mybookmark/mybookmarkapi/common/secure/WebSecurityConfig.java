@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.web.util.secure;
+package com.mybookmark.mybookmarkapi.common.secure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +17,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.mybookmark.mybookmarkapi.domain.user.UserService;
 
+
+/**
+ * セキュリティに関するJava Configuration
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

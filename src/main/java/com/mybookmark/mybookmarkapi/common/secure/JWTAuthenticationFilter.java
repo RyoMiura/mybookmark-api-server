@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.web.util.secure;
+package com.mybookmark.mybookmarkapi.common.secure;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -19,9 +20,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 
+
+/**
+ * ユーザ認証フィルタ
+ */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	private AuthenticationManager authenticationManager;
@@ -41,20 +45,19 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 					new UsernamePasswordAuthenticationToken(form.getLoginId(), form.getPassword(), new ArrayList<>()));
 
 		} catch (IOException | SignatureException e) {
-			throw new RuntimeException(e);
+			throw new BadCredentialsException("bad request", e);
 		}
 	}
 	
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
-		// TODO: ここのマジックナンバーは後で切り出す。(864_000_000->多分トークンの有効期限。 "SecretKeyToGenJWTs"->暗号化する際のキー？)
 		String token = Jwts.builder()
 				.setSubject(((UserDetails) authResult.getPrincipal()).getUsername())
-				.setExpiration(new Date(System.currentTimeMillis() + 864_000_000))
-				.signWith(SignatureAlgorithm.HS512, "SecretKeyToGenJWTs".getBytes())
+				.setExpiration(new Date(System.currentTimeMillis() + SecurityProperty.TOKEN_PERIOD))
+				.signWith(SecurityProperty.SECURITY_ALGORITHM, SecurityProperty.SECRET_KEY.getBytes())
 				.compact();
-		response.addHeader("Authorization", "Bearer " + token);
+		response.addHeader("Authorization", SecurityProperty.TOKEN_PREFIX + token);
 	}
 
 }

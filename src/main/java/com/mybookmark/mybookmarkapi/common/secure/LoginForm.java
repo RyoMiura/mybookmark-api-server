@@ -1,5 +1,8 @@
-package com.mybookmark.mybookmarkapi.web.util.secure;
+package com.mybookmark.mybookmarkapi.common.secure;
 
+/**
+ * ログインフォーム
+ */
 public class LoginForm {
 
 	private String loginId;

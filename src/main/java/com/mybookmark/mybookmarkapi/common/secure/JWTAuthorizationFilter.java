@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.web.util.secure;
+package com.mybookmark.mybookmarkapi.common.secure;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +15,9 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import io.jsonwebtoken.Jwts;
 
+/**
+ * ユーザ認可フィルタ
+ */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
 	public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
@@ -26,7 +29,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 			throws IOException, ServletException {
 		String header = request.getHeader("Authorization");
 		
-		if (header == null || !header.startsWith("Bearer ")) {
+		if (header == null || !header.startsWith(SecurityProperty.TOKEN_PREFIX)) {
 			chain.doFilter(request, response);
 			return;
 		}
@@ -42,8 +45,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 		String token = request.getHeader("Authorization");
 		if (token != null) {
 			String user = Jwts.parser()
-					.setSigningKey("SecretKeyToGenJWTs".getBytes())
-					.parseClaimsJws(token.replaceAll("Bearer ", ""))
+					.setSigningKey(SecurityProperty.SECRET_KEY.getBytes())
+					.parseClaimsJws(token.replaceAll(SecurityProperty.TOKEN_PREFIX, ""))
 					.getBody()
 					.getSubject();
 			

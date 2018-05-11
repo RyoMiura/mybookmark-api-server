@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+// TODO: ROLEはDBじゃなくて設定ファイル(設定クラス)などで持たせた方がよさそう。
+
 @Entity
 public class RoleEntity {
 	
