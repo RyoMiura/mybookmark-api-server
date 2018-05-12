@@ -7,6 +7,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
  */
 public class SecurityProperty {
 
+	/** signin URL */
+	public static final String SIGNIN_URL = "/signin";
+		
 	/** トークンプレフィックス */
 	public static final String TOKEN_PREFIX = "Bearer ";
 	
@@ -18,6 +21,4 @@ public class SecurityProperty {
 	
 	/** 有効期限(ms) */
 	public static final int TOKEN_PERIOD = 10_800_000;
-	
-//	public static final int PERIOD = 0;
 }

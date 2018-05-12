@@ -1,7 +1,7 @@
 package com.mybookmark.mybookmarkapi.common.secure;
 
 /**
- * ユーザロール定数
+ * ユーザロール定数。
  */
 public class UserRole {
 

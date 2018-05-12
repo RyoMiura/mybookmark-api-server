@@ -1,11 +1,14 @@
 package com.mybookmark.mybookmarkapi.common.secure;
 
 /**
- * ログインフォーム
+ * singnin用フォーム。
  */
-public class LoginForm {
+public class SigninForm {
 
+	/** ログインID */
 	private String loginId;
+
+	/** パスワード */
 	private String password;
 	
 	public String getLoginId() {
