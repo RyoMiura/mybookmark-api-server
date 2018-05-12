@@ -29,7 +29,7 @@ public class UserEntity implements UserDetails {
 	@Column(nullable = false)
 	private long userId;
 	
-	@Column(nullable = false)
+	@Column(length = 20, nullable = false)
 	private String loginId;
 	
 	@JsonIgnore

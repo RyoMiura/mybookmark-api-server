@@ -9,7 +9,10 @@ public class SecurityProperty {
 
 	/** signin URL */
 	public static final String SIGNIN_URL = "/signin";
-		
+
+	/** signup URL */
+	public static final String SIGNUP_URL = "/user/signup";
+
 	/** トークンプレフィックス */
 	public static final String TOKEN_PREFIX = "Bearer ";
 	

@@ -20,7 +20,6 @@ public class DBAccessExceptionHandler {
 	@ExceptionHandler({ DataIntegrityViolationException.class })
 	@ResponseBody
 	public Map<String, String> handleDuplicateDBValueError(Exception e) {
-		System.out.println(e);
 		Map<String, String> errorMap = new HashMap<String, String>();
 		errorMap.put("Status", HttpStatus.CONFLICT.toString());
 		errorMap.put("message", "can not add duplicate value");
