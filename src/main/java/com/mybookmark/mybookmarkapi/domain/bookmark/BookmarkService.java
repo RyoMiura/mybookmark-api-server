@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.mybookmark.mybookmarkapi.common.dto.BookmarkDto;
+import com.mybookmark.mybookmarkapi.common.error.handler.ErrorResponse;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 
 @Service
@@ -56,4 +64,5 @@ public class BookmarkService {
 	public void deleteBookmark(long bookmarkId) {
 		bookmarkRepository.deleteById(bookmarkId);
 	}
+
 }
