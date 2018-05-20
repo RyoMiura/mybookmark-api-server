@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.mybookmark.mybookmarkapi.common.dto.BookmarkDto;
 import com.mybookmark.mybookmarkapi.common.error.handler.ErrorResponse;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 

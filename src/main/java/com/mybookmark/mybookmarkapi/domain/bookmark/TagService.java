@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mybookmark.mybookmarkapi.common.dto.TagDto;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 
 @Service

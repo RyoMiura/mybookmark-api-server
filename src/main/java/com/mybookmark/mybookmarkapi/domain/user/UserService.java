@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.mybookmark.mybookmarkapi.common.dto.UserDto;
 import com.mybookmark.mybookmarkapi.common.secure.UserRole;
 import com.mybookmark.mybookmarkapi.domain.util.converter.DtoEntityMapper;
 

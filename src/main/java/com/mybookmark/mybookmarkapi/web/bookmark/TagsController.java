@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mybookmark.mybookmarkapi.common.dto.TagDto;
 import com.mybookmark.mybookmarkapi.common.error.handler.ErrorResponse;
+import com.mybookmark.mybookmarkapi.domain.bookmark.TagDto;
 import com.mybookmark.mybookmarkapi.domain.bookmark.TagService;
 import com.mybookmark.mybookmarkapi.web.util.converter.DtoFormMapper;
 

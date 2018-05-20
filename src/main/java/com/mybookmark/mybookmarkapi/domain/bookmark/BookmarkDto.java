@@ -1,4 +1,4 @@
-package com.mybookmark.mybookmarkapi.common.dto;
+package com.mybookmark.mybookmarkapi.domain.bookmark;
 
 import java.util.Set;
 

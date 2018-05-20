@@ -5,8 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.mybookmark.mybookmarkapi.common.dto.UserDto;
 import com.mybookmark.mybookmarkapi.common.secure.UserRole;
+import com.mybookmark.mybookmarkapi.domain.user.UserDto;
 import com.mybookmark.mybookmarkapi.domain.user.UserService;
 
 @SpringBootApplication

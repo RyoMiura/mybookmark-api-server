@@ -8,7 +8,7 @@ import org.modelmapper.spi.MappingContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mybookmark.mybookmarkapi.common.dto.TagDto;
+import com.mybookmark.mybookmarkapi.domain.bookmark.TagDto;
 
 @Component
 public class DtoFormMapper implements Converter<Long, TagDto> {
