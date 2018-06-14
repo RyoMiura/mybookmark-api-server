@@ -1,5 +1,6 @@
 package com.mybookmark.mybookmarkapi.web.bookmark;
 
+import java.security.Principal;
 import java.util.Collection;
 
 import javax.persistence.EntityNotFoundException;
@@ -45,15 +46,15 @@ public class BookmarksController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void createBookmark(@RequestBody @Valid CreateBookmarkForm input) {
+	public void createBookmark(@RequestBody @Valid CreateBookmarkForm input, Principal principal) {
 		BookmarkDto dto = dtoFormMapper.fromFormToDto(input, BookmarkDto.class);
-		bookmarkService.createBookmark(dto);
+		bookmarkService.createBookmark(dto, principal);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/{bookmarkId}")
-	public ResponseEntity<ErrorResponse> updateBookmark(HttpServletRequest request, @PathVariable long bookmarkId, @RequestBody @Valid CreateBookmarkForm input) {
+	public ResponseEntity<ErrorResponse> updateBookmark(HttpServletRequest request, @PathVariable long bookmarkId, @RequestBody @Valid CreateBookmarkForm input, Principal principal) {
 		BookmarkDto dto = dtoFormMapper.fromFormToDto(input, BookmarkDto.class);
-		boolean isSuccess = bookmarkService.updateBookmark(bookmarkId, dto);
+		boolean isSuccess = bookmarkService.updateBookmark(bookmarkId, dto, principal);
 		if (isSuccess) {
 			return new ResponseEntity<ErrorResponse>(HttpStatus.OK);
 		} else {
@@ -63,8 +64,14 @@ public class BookmarksController {
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{bookmarkId}")
-	public void deleteBookmark(@PathVariable long bookmarkId) {
-		bookmarkService.deleteBookmark(bookmarkId);
+	public ResponseEntity<ErrorResponse> deleteBookmark(HttpServletRequest request, @PathVariable long bookmarkId, Principal principal) {
+		boolean isSuccess = bookmarkService.deleteBookmark(bookmarkId, principal);
+		if (isSuccess) {
+			return new ResponseEntity<ErrorResponse>(HttpStatus.OK);
+		} else {
+			HttpStatus status = HttpStatus.NOT_FOUND;
+			return new ResponseEntity<ErrorResponse>(new ErrorResponse(status, request), status);
+		}
 	}
 
 	

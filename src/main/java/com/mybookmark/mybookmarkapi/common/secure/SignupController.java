@@ -1,6 +1,7 @@
 package com.mybookmark.mybookmarkapi.common.secure;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.WebRequest;
 
 import com.mybookmark.mybookmarkapi.common.error.handler.ErrorResponse;
 import com.mybookmark.mybookmarkapi.domain.user.UserDto;
@@ -30,7 +29,7 @@ public class SignupController {
 	DtoFormMapper dtoFormMapper;
 	
 	@RequestMapping(value = SecurityProperty.SIGNUP_URL, method = RequestMethod.POST)
-	public void createUser(@RequestBody SignupForm input) {
+	public void createUser(@RequestBody @Valid SignupForm input) {
 		UserDto dto = dtoFormMapper.fromFormToDto(input, UserDto.class);
 		userService.createCommonUser(dto);
 	}

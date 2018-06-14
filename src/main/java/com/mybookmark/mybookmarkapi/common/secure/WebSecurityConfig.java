@@ -45,15 +45,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().authorizeRequests()
 			.antMatchers(HttpMethod.POST, SecurityProperty.SIGNIN_URL).permitAll()
 			.antMatchers(HttpMethod.POST, SecurityProperty.SIGNUP_URL).permitAll()
-			.antMatchers("/bookmarks/**").permitAll() // テスト用
-			.antMatchers("/tags/**").permitAll() // テスト用
+//			.antMatchers("/bookmarks/**").permitAll() // テスト用
+//			.antMatchers("/tags/**").permitAll() // テスト用
 			.anyRequest().authenticated().and()
 			.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 			.addFilter(new JWTAuthorizationFilter(authenticationManager()))
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
-	// テスト用に無効化させている。
 //	@Bean
 //	CorsConfigurationSource corsConfigurationSource() {
 //		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

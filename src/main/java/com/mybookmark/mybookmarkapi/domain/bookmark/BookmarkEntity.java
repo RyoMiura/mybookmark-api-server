@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.mybookmark.mybookmarkapi.domain.user.UserEntity;
 
 @Entity
 public class BookmarkEntity {
@@ -29,6 +33,9 @@ public class BookmarkEntity {
 	@ManyToMany
 	private Set<TagEntity> tags;
 
+	@ManyToOne
+	private UserEntity user;
+	
 	public long getBookmarkId() {
 		return bookmarkId;
 	}
@@ -47,6 +54,10 @@ public class BookmarkEntity {
 
 	public Set<TagEntity> getTags() {
 		return tags;
+	}
+	
+	public UserEntity getUser() {
+		return user;
 	}
 
 	public void setBookmarkId(long bookmarkId) {
@@ -68,5 +79,10 @@ public class BookmarkEntity {
 	public void setTags(Set<TagEntity> tags) {
 		this.tags = tags;
 	}
+	
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
 
 }

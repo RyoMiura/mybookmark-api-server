@@ -8,7 +8,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class SecurityProperty {
 
 	/** signin URL */
-	public static final String SIGNIN_URL = "/signin";
+	public static final String SIGNIN_URL = "/user/signin";
 
 	/** signup URL */
 	public static final String SIGNUP_URL = "/user/signup";
